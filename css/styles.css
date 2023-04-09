@@ -156,15 +156,55 @@ color:var(--main-text-color);
     color:var(--secondary-title-color);
 }
 
+
+
+
+
+.header-item  :hover ,
+.header-item  :focus {
+    color: var(--dark-blue) ;
+}
+
+
+
+
+
+
+
+
+
 .menu-link {
 
 font-weight: 500;
 line-height: 1.5;
 letter-spacing: 0.02em;
 color: var(--main-title-color);
-
+position: relative;
+display: block;
+transition-property: color;
+transition-duration: 250ms;
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 }
+
+
+.current.menu-link::after{
+    content: '' ;
+    width: 100%;
+    height: 4px;
+    background: var(--dark-blue);
+    border-radius: 2px;
+    display: block;
+    position: absolute;
+top: 45px;
+transition-property: color;
+transition-duration: 250ms;
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    
+
+    }
+    
 
 
 
@@ -179,26 +219,30 @@ gap: 40px;
 
 }
 .contact-mail {
-    color: var(--main-text-color);   
+    color: var(--main-text-color);
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);   
    
 }
 .contact-number {
     color:var(--main-text-color);
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
  
-.header-item  :hover ,
-.header-item  :focus {
-    color: var(--dark-blue) ;
-}
+
 
  .contact-mail:hover ,
  .contact-mail:focus{
-    color: var(--dark-blue)
+    color: var(--dark-blue);
+
+    
  }
 
  .contact-number:hover ,
  .contact-number:focus{
-    color:var(--dark-blue)
+    color:var(--dark-blue);
+  
  }
 
 
@@ -269,6 +313,8 @@ margin: 0 auto 48px ;
    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
    display: block;
    margin: 0 auto;
+   transition-duration: 250ms;
+   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
    
    
 
@@ -276,7 +322,8 @@ margin: 0 auto 48px ;
 
 .hero-button:hover ,
 .hero-button:focus {
- background-color:var(--dark-blue)
+ background-color:var(--dark-blue);
+
 }
 
 
@@ -523,7 +570,9 @@ width: calc((100% - 120px) /6);
 
 .footer-soc-item{
     width: 40px;
-    height: 40px;      
+    height: 40px; 
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);     
 }
 
 .footer-soc-link{
@@ -542,6 +591,7 @@ width: calc((100% - 120px) /6);
 .footer-soc-item :hover ,
 .footer-soc-item :focus {
     background-color:#31D0AA ;
+   
 }
 
 /*=============/Footer=============*/
@@ -586,6 +636,8 @@ width: calc((100% - 120px) /6);
     background-color:var(--dark-blue);
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
     border: 1px solid var(--dark-blue);
+    transition-duration: 250ms;
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .servise-list{
     display: flex;
@@ -598,18 +650,47 @@ width: calc((100% - 120px) /6);
 }
 
 .service-link{
-    display:block
+    display:block;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .service-item{
     width: calc((100% - 48px) / 3 );
     
+    
 }
+
+.service-item:hover .servise-cover-text{
+    transform: translateY(0);
+    
+}
+
+.service-top-wrap{
+    position: relative;
+    overflow: hidden;
+}
+
+.servise-cover-text{
+    position: absolute;
+    top: 0;
+    color: var(--sacondary-background-color);
+    padding-top: 40px;
+    padding-left: 32px;
+    padding-right: 32px;
+    background-color: var(--light-blue);
+    height: 100%;
+    transform: translateY(100%);
+    transition: transform 250ms linear;
+}
+
+
+
 
 .service-link:hover ,
 .service-link:focus {
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
-
+   
 }
 .text-block{
 border-left: 1px solid var(--secondary-text-color);
@@ -630,9 +711,55 @@ padding-left: 16px;
 
 
 
+.backdrop{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(46, 47, 66, 0.4);
+    transition: opacity 300ms linear, visibility 300ms linear ;
+
+}
+
+.modal{
+    width: 408px;
+    min-height: 576px;
+    background-color: #FCFCFC;
+border-radius: 4px;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%) scaleY(1) ;
+transition: transform 250ms linear;
+padding: 24px;
+}
 
 
+.backdrop .is-hidden .modal {
+    transform: translate(-50%, -50%) scaleY(0);
+    
 
+}
 
+ 
+.modal-close{
+    display: block;
+    margin-left: auto;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #E7E9FC;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.is-hidden{
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
 
 
